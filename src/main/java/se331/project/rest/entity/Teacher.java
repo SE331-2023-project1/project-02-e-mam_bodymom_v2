@@ -3,6 +3,7 @@ package se331.project.rest.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
+import java.util.ArrayList;
 
 @Data
 @Builder
@@ -19,4 +20,7 @@ public class Teacher {
     @ElementCollection
     List<String> images;
     String department;
+    @OneToMany(mappedBy = "teacher")
+    @Builder.Default
+    List<Student> ownStudent = new ArrayList<>();
 }

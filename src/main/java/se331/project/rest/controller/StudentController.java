@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import se331.project.rest.entity.Student;
 import se331.project.rest.service.StudentService;
+import se331.project.rest.util.LabMapper;
 
 @RestController
 @RequiredArgsConstructor
 public class StudentController {
-
     final StudentService studentService;
     @GetMapping("students")
     public ResponseEntity<?> getStudentLists(@RequestParam(value = "_limit", required = false) Integer perPage,
@@ -25,15 +25,17 @@ public class StudentController {
         Page<Student> pageOutput = studentService.getStudents(perPage, page);
         HttpHeaders responseHeader = new HttpHeaders();
         responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
-        return new ResponseEntity<>(pageOutput.getContent(),responseHeader,HttpStatus.OK);
+        return new ResponseEntity<>(LabMapper.INSTANCE.getStudentDTO(pageOutput.getContent()),responseHeader,HttpStatus.OK);
     }
     @GetMapping("students/{id}")
     public ResponseEntity<?> getStudent(@PathVariable("id") Long id) {
         Student output = studentService.getStudent(id);
         if (output != null) {
-            return ResponseEntity.ok(output);
+            return ResponseEntity.ok(LabMapper.INSTANCE.getStudentDTO(output));
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The given id is not found");
         }
     }
+
 }
+
