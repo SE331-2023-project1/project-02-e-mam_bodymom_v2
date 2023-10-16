@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
@@ -25,6 +27,10 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Page<Student> getStudents(String title, Pageable pageable) {
         return null;
+    }
+    @Override
+    public List<Student> getAllStudents() {
+        return studentDao.getStudents(Pageable.unpaged()).getContent();
     }
 
     @Override

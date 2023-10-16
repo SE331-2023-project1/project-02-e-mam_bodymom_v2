@@ -27,6 +27,10 @@ public class StudentController {
         responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
         return new ResponseEntity<>(LabMapper.INSTANCE.getStudentDTO(pageOutput.getContent()),responseHeader,HttpStatus.OK);
     }
+    @GetMapping("AllStudents")
+    public ResponseEntity<?> getStudents() {
+        return ResponseEntity.ok(LabMapper.INSTANCE.getStudentDTO(studentService.getAllStudents()));
+    }
     @GetMapping("students/{id}")
     public ResponseEntity<?> getStudent(@PathVariable("id") Long id) {
         Student output = studentService.getStudent(id);

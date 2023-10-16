@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 
 import se331.project.rest.entity.Student;
 
+import java.util.List;
 
 
 public interface StudentService {
@@ -15,6 +16,7 @@ public interface StudentService {
     Page<Student> getStudents(Integer pageSize, Integer page);
 
     Page<Student> getStudents(String title, Pageable pageable);
+    List<Student> getAllStudents();
 
     Student getStudent(Long id);
 

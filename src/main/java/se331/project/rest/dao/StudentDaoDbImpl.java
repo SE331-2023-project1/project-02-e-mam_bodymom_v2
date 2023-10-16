@@ -31,8 +31,8 @@ public class StudentDaoDbImpl implements StudentDao {
     }
 
     @Override
-    public Page<Student> getStudents(String name, Pageable page) {
-        return null;
+    public Page<Student> getStudents(Pageable page) {
+        return studentRepository.findAll(page);
     }
 
     @Override
