@@ -28,6 +28,10 @@ public class TeacherController {
         responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
         return new ResponseEntity<>(LabMapper.INSTANCE.getTeacherDTO(pageOutput.getContent()),responseHeader, HttpStatus.OK);
     }
+    @GetMapping("AllTeachers")
+    public ResponseEntity<?> getTeachers() {
+        return ResponseEntity.ok(LabMapper.INSTANCE.getTeacherDTO(teacherService.getAllTeachers()));
+    }
     @GetMapping("teachers/{id}")
     public ResponseEntity<?> getTeacher(@PathVariable("id") Long id) {
         Teacher output = teacherService.getTeacher(id);

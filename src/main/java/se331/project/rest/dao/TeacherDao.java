@@ -9,7 +9,7 @@ public interface TeacherDao {
     Integer getTeacherSize();
     Teacher save(Teacher teacher);
     Page<Teacher> getTeachers(Integer pageSize, Integer page);
-    Page<Teacher> getTeachers(String name, Pageable page);
+    Page<Teacher> getTeachers(Pageable page);
     Teacher getTeacher(Long id);
 
 }

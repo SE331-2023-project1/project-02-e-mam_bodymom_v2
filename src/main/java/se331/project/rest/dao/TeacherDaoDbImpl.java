@@ -30,8 +30,8 @@ public class TeacherDaoDbImpl implements TeacherDao {
     }
 
     @Override
-    public Page<Teacher> getTeachers(String name, Pageable page) {
-        return null;
+    public Page<Teacher> getTeachers(Pageable page) {
+        return teacherRepository.findAll(page);
     }
 
     @Override

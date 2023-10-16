@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class TeacherServiceImpl implements TeacherService{
@@ -23,8 +25,8 @@ public class TeacherServiceImpl implements TeacherService{
     }
 
     @Override
-    public Page<Teacher> getTeachers(String title, Pageable pageable) {
-        return null;
+    public List<Teacher> getAllTeachers() {
+        return teacherDao.getTeachers(Pageable.unpaged()).getContent();
     }
 
     @Override

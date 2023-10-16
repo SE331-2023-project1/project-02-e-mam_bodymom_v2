@@ -4,6 +4,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import  se331.project.rest.entity.Teacher;
 
+import java.util.List;
+
 
 public interface TeacherService {
 
@@ -11,7 +13,7 @@ public interface TeacherService {
 
     Page<Teacher> getTeachers(Integer pageSize, Integer page);
 
-    Page<Teacher> getTeachers(String title, Pageable pageable);
+    List<Teacher> getAllTeachers();
 
     Teacher getTeacher(Long id);
 
