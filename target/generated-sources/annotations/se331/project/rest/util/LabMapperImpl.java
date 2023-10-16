@@ -12,7 +12,7 @@ import se331.project.rest.entity.TeacherOwnStudentDTO;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2566-10-16T22:32:27+0700",
+    date = "2566-10-16T23:11:14+0700",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.8 (Oracle Corporation)"
 )
 public class LabMapperImpl implements LabMapper {
