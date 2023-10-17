@@ -9,34 +9,14 @@ import se331.project.rest.entity.StudentTeacherDTO;
 import se331.project.rest.entity.Teacher;
 import se331.project.rest.entity.TeacherDTO;
 import se331.project.rest.entity.TeacherOwnStudentDTO;
+import se331.project.rest.security.user.User;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2566-10-17T16:31:28+0700",
-    comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.35.0.v20230814-2020, environment: Java 17.0.8.1 (Eclipse Adoptium)"
+    date = "2566-10-18T00:19:00+0700",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.8 (Oracle Corporation)"
 )
 public class LabMapperImpl implements LabMapper {
-
-    @Override
-    public StudentDTO getStudentDTO(Student student) {
-        if ( student == null ) {
-            return null;
-        }
-
-        StudentDTO.StudentDTOBuilder studentDTO = StudentDTO.builder();
-
-        studentDTO.department( student.getDepartment() );
-        studentDTO.id( student.getId() );
-        List<String> list = student.getImages();
-        if ( list != null ) {
-            studentDTO.images( new ArrayList<String>( list ) );
-        }
-        studentDTO.name( student.getName() );
-        studentDTO.surname( student.getSurname() );
-        studentDTO.teacher( teacherToStudentTeacherDTO( student.getTeacher() ) );
-
-        return studentDTO.build();
-    }
 
     @Override
     public List<StudentDTO> getStudentDTO(List<Student> students) {
@@ -60,15 +40,16 @@ public class LabMapperImpl implements LabMapper {
 
         TeacherDTO.TeacherDTOBuilder teacherDTO = TeacherDTO.builder();
 
-        teacherDTO.department( teacher.getDepartment() );
-        teacherDTO.id( teacher.getId() );
-        List<String> list = teacher.getImages();
-        if ( list != null ) {
-            teacherDTO.images( new ArrayList<String>( list ) );
-        }
-        teacherDTO.name( teacher.getName() );
         teacherDTO.ownStudent( studentListToTeacherOwnStudentDTOList( teacher.getOwnStudent() ) );
-        teacherDTO.surname( teacher.getSurname() );
+        teacherDTO.username( teacherUserUsername( teacher ) );
+        teacherDTO.name( teacherUserFirstname( teacher ) );
+        teacherDTO.surname( teacherUserLastname( teacher ) );
+        teacherDTO.id( teacher.getId() );
+        List<String> list1 = teacher.getImages();
+        if ( list1 != null ) {
+            teacherDTO.images( new ArrayList<String>( list1 ) );
+        }
+        teacherDTO.department( teacher.getDepartment() );
 
         return teacherDTO.build();
     }
@@ -87,17 +68,26 @@ public class LabMapperImpl implements LabMapper {
         return list;
     }
 
-    protected StudentTeacherDTO teacherToStudentTeacherDTO(Teacher teacher) {
-        if ( teacher == null ) {
+    @Override
+    public StudentDTO getStudentDTO(Student student) {
+        if ( student == null ) {
             return null;
         }
 
-        StudentTeacherDTO.StudentTeacherDTOBuilder studentTeacherDTO = StudentTeacherDTO.builder();
+        StudentDTO.StudentDTOBuilder studentDTO = StudentDTO.builder();
 
-        studentTeacherDTO.id( teacher.getId() );
-        studentTeacherDTO.name( teacher.getName() );
+        studentDTO.teacher( teacherToStudentTeacherDTO( student.getTeacher() ) );
+        studentDTO.username( studentUserUsername( student ) );
+        studentDTO.name( studentUserFirstname( student ) );
+        studentDTO.surname( studentUserLastname( student ) );
+        studentDTO.id( student.getId() );
+        List<String> list = student.getImages();
+        if ( list != null ) {
+            studentDTO.images( new ArrayList<String>( list ) );
+        }
+        studentDTO.department( student.getDepartment() );
 
-        return studentTeacherDTO.build();
+        return studentDTO.build();
     }
 
     protected TeacherOwnStudentDTO studentToTeacherOwnStudentDTO(Student student) {
@@ -125,5 +115,108 @@ public class LabMapperImpl implements LabMapper {
         }
 
         return list1;
+    }
+
+    private String teacherUserUsername(Teacher teacher) {
+        if ( teacher == null ) {
+            return null;
+        }
+        User user = teacher.getUser();
+        if ( user == null ) {
+            return null;
+        }
+        String username = user.getUsername();
+        if ( username == null ) {
+            return null;
+        }
+        return username;
+    }
+
+    private String teacherUserFirstname(Teacher teacher) {
+        if ( teacher == null ) {
+            return null;
+        }
+        User user = teacher.getUser();
+        if ( user == null ) {
+            return null;
+        }
+        String firstname = user.getFirstname();
+        if ( firstname == null ) {
+            return null;
+        }
+        return firstname;
+    }
+
+    private String teacherUserLastname(Teacher teacher) {
+        if ( teacher == null ) {
+            return null;
+        }
+        User user = teacher.getUser();
+        if ( user == null ) {
+            return null;
+        }
+        String lastname = user.getLastname();
+        if ( lastname == null ) {
+            return null;
+        }
+        return lastname;
+    }
+
+    protected StudentTeacherDTO teacherToStudentTeacherDTO(Teacher teacher) {
+        if ( teacher == null ) {
+            return null;
+        }
+
+        StudentTeacherDTO.StudentTeacherDTOBuilder studentTeacherDTO = StudentTeacherDTO.builder();
+
+        studentTeacherDTO.id( teacher.getId() );
+        studentTeacherDTO.name( teacher.getName() );
+
+        return studentTeacherDTO.build();
+    }
+
+    private String studentUserUsername(Student student) {
+        if ( student == null ) {
+            return null;
+        }
+        User user = student.getUser();
+        if ( user == null ) {
+            return null;
+        }
+        String username = user.getUsername();
+        if ( username == null ) {
+            return null;
+        }
+        return username;
+    }
+
+    private String studentUserFirstname(Student student) {
+        if ( student == null ) {
+            return null;
+        }
+        User user = student.getUser();
+        if ( user == null ) {
+            return null;
+        }
+        String firstname = user.getFirstname();
+        if ( firstname == null ) {
+            return null;
+        }
+        return firstname;
+    }
+
+    private String studentUserLastname(Student student) {
+        if ( student == null ) {
+            return null;
+        }
+        User user = student.getUser();
+        if ( user == null ) {
+            return null;
+        }
+        String lastname = user.getLastname();
+        if ( lastname == null ) {
+            return null;
+        }
+        return lastname;
     }
 }

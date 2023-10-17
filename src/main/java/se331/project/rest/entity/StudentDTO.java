@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class StudentDTO {
     Long id;
+    String username;
     String name;
     String surname;
     List<String> images;

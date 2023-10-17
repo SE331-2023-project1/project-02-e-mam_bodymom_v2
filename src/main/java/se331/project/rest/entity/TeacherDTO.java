@@ -15,6 +15,7 @@ import java.util.List;
 public class TeacherDTO {
 
     Long id;
+    String username;
     String name;
     String surname;
     List<String> images;
