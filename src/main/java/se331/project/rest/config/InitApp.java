@@ -6,8 +6,10 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import se331.project.rest.entity.Announcement;
 import se331.project.rest.entity.Student;
 import se331.project.rest.entity.Teacher;
+import se331.project.rest.repository.AnnouncementRepository;
 import se331.project.rest.repository.StudentRepository;
 import se331.project.rest.repository.TeacherRepository;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +25,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     final StudentRepository studentRepository;
     final TeacherRepository teacherRepository;
     final UserRepository userRepository;
+    final AnnouncementRepository announcementRepository;
     @Override
     @Transactional
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
@@ -82,6 +85,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userT1.setFirstname("Kong");
         userT1.setLastname("Passakorn");
         userT1.setRoles(List.of(Role.ROLE_TEACHER));
+        userT1.setDepartment("Software Engineer");
         userRepository.save(userT1);
 
         Teacher teacher1 = new Teacher();
@@ -94,6 +98,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userT2.setFirstname("Tei");
         userT2.setLastname("Pathathai");
         userT2.setRoles(List.of(Role.ROLE_TEACHER));
+        userT2.setDepartment("Software Engineer");
         userRepository.save(userT2);
 
         Teacher teacher2 = new Teacher();
@@ -108,6 +113,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userS1.setFirstname("Thiwakon");
         userS1.setLastname("Sakunchao");
         userS1.setRoles(List.of(Role.ROLE_STUDENT));
+        userS1.setDepartment("Software Engineer");
         userRepository.save(userS1);
 
         Student student1 = new Student();
@@ -121,6 +127,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userS2.setFirstname("Sorawee");
         userS2.setLastname("Sakunchao");
         userS2.setRoles(List.of(Role.ROLE_STUDENT));
+        userS2.setDepartment("Com Sci");
         userRepository.save(userS2);
 
         Student student2 = new Student();
@@ -134,6 +141,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userS3.setFirstname("Pattanachai");
         userS3.setLastname("Sakunchao");
         userS3.setRoles(List.of(Role.ROLE_STUDENT));
+        userS3.setDepartment("Mathematics");
         userRepository.save(userS3);
 
         Student student3 = new Student();
@@ -147,6 +155,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userS4.setFirstname("Taninwat");
         userS4.setLastname("Sakunchao");
         userS4.setRoles(List.of(Role.ROLE_STUDENT));
+        userS4.setDepartment("Economics");
         userRepository.save(userS4);
 
         Student student4 = new Student();
@@ -180,6 +189,13 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .roles(List.of(Role.ROLE_ADMIN))
                 .build();
         userRepository.save(admin);
+
+
+        Announcement announcement;
+        announcement = Announcement.builder()
+                .title("Final Exam")
+                .description("Final Exam is tomorrow.").build();
+        announcementRepository.save(announcement);
 
     }
 //    User user1, user2, user3;

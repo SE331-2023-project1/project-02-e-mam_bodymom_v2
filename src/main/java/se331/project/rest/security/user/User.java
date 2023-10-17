@@ -37,6 +37,9 @@ public class User implements UserDetails {
   private String username;
   private String email;
   private String password;
+  @ElementCollection
+  private List<String> images;
+  private String department;
 
   @Enumerated(EnumType.STRING)
   @ElementCollection

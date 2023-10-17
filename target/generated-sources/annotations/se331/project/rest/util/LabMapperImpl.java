@@ -16,7 +16,7 @@ import se331.project.rest.security.user.User;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2566-10-18T02:56:17+0700",
+    date = "2566-10-18T03:21:31+0700",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.8 (Oracle Corporation)"
 )
 public class LabMapperImpl implements LabMapper {
@@ -52,12 +52,13 @@ public class LabMapperImpl implements LabMapper {
         if ( list1 != null ) {
             teacherDTO.roles( new ArrayList<Role>( list1 ) );
         }
-        teacherDTO.id( teacher.getId() );
-        List<String> list2 = teacher.getImages();
+        List<String> images = teacherUserImages( teacher );
+        List<String> list2 = images;
         if ( list2 != null ) {
             teacherDTO.images( new ArrayList<String>( list2 ) );
         }
-        teacherDTO.department( teacher.getDepartment() );
+        teacherDTO.department( teacherUserDepartment( teacher ) );
+        teacherDTO.id( teacher.getId() );
 
         return teacherDTO.build();
     }
@@ -93,12 +94,13 @@ public class LabMapperImpl implements LabMapper {
         if ( list != null ) {
             studentDTO.roles( new ArrayList<Role>( list ) );
         }
-        studentDTO.id( student.getId() );
-        List<String> list1 = student.getImages();
+        List<String> images = studentUserImages( student );
+        List<String> list1 = images;
         if ( list1 != null ) {
             studentDTO.images( new ArrayList<String>( list1 ) );
         }
-        studentDTO.department( student.getDepartment() );
+        studentDTO.department( studentUserDepartment( student ) );
+        studentDTO.id( student.getId() );
 
         return studentDTO.build();
     }
@@ -219,6 +221,36 @@ public class LabMapperImpl implements LabMapper {
         return roles;
     }
 
+    private List<String> teacherUserImages(Teacher teacher) {
+        if ( teacher == null ) {
+            return null;
+        }
+        User user = teacher.getUser();
+        if ( user == null ) {
+            return null;
+        }
+        List<String> images = user.getImages();
+        if ( images == null ) {
+            return null;
+        }
+        return images;
+    }
+
+    private String teacherUserDepartment(Teacher teacher) {
+        if ( teacher == null ) {
+            return null;
+        }
+        User user = teacher.getUser();
+        if ( user == null ) {
+            return null;
+        }
+        String department = user.getDepartment();
+        if ( department == null ) {
+            return null;
+        }
+        return department;
+    }
+
     protected StudentTeacherDTO teacherToStudentTeacherDTO(Teacher teacher) {
         if ( teacher == null ) {
             return null;
@@ -290,5 +322,35 @@ public class LabMapperImpl implements LabMapper {
             return null;
         }
         return roles;
+    }
+
+    private List<String> studentUserImages(Student student) {
+        if ( student == null ) {
+            return null;
+        }
+        User user = student.getUser();
+        if ( user == null ) {
+            return null;
+        }
+        List<String> images = user.getImages();
+        if ( images == null ) {
+            return null;
+        }
+        return images;
+    }
+
+    private String studentUserDepartment(Student student) {
+        if ( student == null ) {
+            return null;
+        }
+        User user = student.getUser();
+        if ( user == null ) {
+            return null;
+        }
+        String department = user.getDepartment();
+        if ( department == null ) {
+            return null;
+        }
+        return department;
     }
 }
