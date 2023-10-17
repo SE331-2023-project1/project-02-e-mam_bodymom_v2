@@ -9,11 +9,12 @@ import se331.project.rest.entity.StudentTeacherDTO;
 import se331.project.rest.entity.Teacher;
 import se331.project.rest.entity.TeacherDTO;
 import se331.project.rest.entity.TeacherOwnStudentDTO;
+import se331.project.rest.security.user.Role;
 import se331.project.rest.security.user.User;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2566-10-18T00:19:00+0700",
+    date = "2566-10-18T02:00:52+0700",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.8 (Oracle Corporation)"
 )
 public class LabMapperImpl implements LabMapper {
@@ -44,10 +45,15 @@ public class LabMapperImpl implements LabMapper {
         teacherDTO.username( teacherUserUsername( teacher ) );
         teacherDTO.name( teacherUserFirstname( teacher ) );
         teacherDTO.surname( teacherUserLastname( teacher ) );
-        teacherDTO.id( teacher.getId() );
-        List<String> list1 = teacher.getImages();
+        List<Role> roles = teacherUserRoles( teacher );
+        List<Role> list1 = roles;
         if ( list1 != null ) {
-            teacherDTO.images( new ArrayList<String>( list1 ) );
+            teacherDTO.roles( new ArrayList<Role>( list1 ) );
+        }
+        teacherDTO.id( teacher.getId() );
+        List<String> list2 = teacher.getImages();
+        if ( list2 != null ) {
+            teacherDTO.images( new ArrayList<String>( list2 ) );
         }
         teacherDTO.department( teacher.getDepartment() );
 
@@ -80,10 +86,15 @@ public class LabMapperImpl implements LabMapper {
         studentDTO.username( studentUserUsername( student ) );
         studentDTO.name( studentUserFirstname( student ) );
         studentDTO.surname( studentUserLastname( student ) );
-        studentDTO.id( student.getId() );
-        List<String> list = student.getImages();
+        List<Role> roles = studentUserRoles( student );
+        List<Role> list = roles;
         if ( list != null ) {
-            studentDTO.images( new ArrayList<String>( list ) );
+            studentDTO.roles( new ArrayList<Role>( list ) );
+        }
+        studentDTO.id( student.getId() );
+        List<String> list1 = student.getImages();
+        if ( list1 != null ) {
+            studentDTO.images( new ArrayList<String>( list1 ) );
         }
         studentDTO.department( student.getDepartment() );
 
@@ -162,6 +173,21 @@ public class LabMapperImpl implements LabMapper {
         return lastname;
     }
 
+    private List<Role> teacherUserRoles(Teacher teacher) {
+        if ( teacher == null ) {
+            return null;
+        }
+        User user = teacher.getUser();
+        if ( user == null ) {
+            return null;
+        }
+        List<Role> roles = user.getRoles();
+        if ( roles == null ) {
+            return null;
+        }
+        return roles;
+    }
+
     protected StudentTeacherDTO teacherToStudentTeacherDTO(Teacher teacher) {
         if ( teacher == null ) {
             return null;
@@ -218,5 +244,20 @@ public class LabMapperImpl implements LabMapper {
             return null;
         }
         return lastname;
+    }
+
+    private List<Role> studentUserRoles(Student student) {
+        if ( student == null ) {
+            return null;
+        }
+        User user = student.getUser();
+        if ( user == null ) {
+            return null;
+        }
+        List<Role> roles = user.getRoles();
+        if ( roles == null ) {
+            return null;
+        }
+        return roles;
     }
 }

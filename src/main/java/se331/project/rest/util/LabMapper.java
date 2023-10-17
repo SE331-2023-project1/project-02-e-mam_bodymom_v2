@@ -15,11 +15,13 @@ public interface LabMapper {
     @Mapping(source = "user.username", target = "username")
     @Mapping(source = "user.firstname", target = "name")
     @Mapping(source = "user.lastname", target = "surname")
+    @Mapping(source = "user.roles", target = "roles")
     TeacherDTO getTeacherDTO(Teacher teacher);
     List<TeacherDTO> getTeacherDTO(List<Teacher> teachers);
     @Mapping(source = "teacher", target = "teacher")
     @Mapping(source = "user.username", target = "username")
     @Mapping(source = "user.firstname", target = "name")
     @Mapping(source = "user.lastname", target = "surname")
+    @Mapping(source = "user.roles", target = "roles")
     StudentDTO getStudentDTO(Student student);
 }

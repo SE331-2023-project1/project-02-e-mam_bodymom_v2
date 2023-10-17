@@ -12,7 +12,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import se331.project.rest.entity.Student;
+import se331.project.rest.entity.Teacher;
 import se331.project.rest.repository.StudentRepository;
+import se331.project.rest.repository.TeacherRepository;
 import se331.project.rest.security.config.JwtService;
 import se331.project.rest.security.token.Token;
 import se331.project.rest.security.token.TokenRepository;
@@ -34,10 +36,11 @@ public class AuthenticationService {
   private final JwtService jwtService;
   private final AuthenticationManager authenticationManager;
   private final StudentRepository studentRepository;
+  private final TeacherRepository teacherRepository;
 
-  public AuthenticationResponse register(RegisterRequest request) {
+  public AuthenticationResponse registerStudent(RegisterRequest request) {
 
-    User user = User.builder()
+    User userStudent = User.builder()
             .username(request.getUsername())
             .firstname(request.getFirstname())
             .lastname(request.getLastname())
@@ -45,18 +48,42 @@ public class AuthenticationService {
             .password(passwordEncoder.encode(request.getPassword()))
             .roles(List.of(Role.ROLE_STUDENT))
             .build();
-    var savedUser = repository.save(user);
+    var savedUser = repository.save(userStudent);
     Student student = new Student();
     student.setUser(savedUser);
     studentRepository.save(student);
-    var jwtToken = jwtService.generateToken(user);
-    var refreshToken = jwtService.generateRefreshToken(user);
+    var jwtToken = jwtService.generateToken(userStudent);
+    var refreshToken = jwtService.generateRefreshToken(userStudent);
     saveUserToken(savedUser, jwtToken);
 
     return AuthenticationResponse.builder()
         .accessToken(jwtToken)
         .refreshToken(refreshToken)
         .build();
+  }
+
+  public AuthenticationResponse registerTeacher(RegisterRequest request) {
+
+    User userTeacher = User.builder()
+            .username(request.getUsername())
+            .firstname(request.getFirstname())
+            .lastname(request.getLastname())
+            .email(request.getEmail())
+            .password(passwordEncoder.encode(request.getPassword()))
+            .roles(List.of(Role.ROLE_TEACHER))
+            .build();
+    var savedUser = repository.save(userTeacher);
+    Teacher teacher = new Teacher();
+    teacher.setUser(savedUser);
+    teacherRepository.save(teacher);
+    var jwtToken = jwtService.generateToken(userTeacher);
+    var refreshToken = jwtService.generateRefreshToken(userTeacher);
+    saveUserToken(savedUser, jwtToken);
+
+    return AuthenticationResponse.builder()
+            .accessToken(jwtToken)
+            .refreshToken(refreshToken)
+            .build();
   }
 
   public AuthenticationResponse authenticate(AuthenticationRequest request) {

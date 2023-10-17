@@ -34,12 +34,14 @@ public class SecurityConfiguration {
     http.csrf((crsf) -> crsf.disable())
             .authorizeHttpRequests((authorize) -> {
               authorize.requestMatchers("/api/v1/auth/**").permitAll()
+//                      .requestMatchers("/api/v1/auth/register/teacher").hasRole("ADMIN")
+//                      .requestMatchers("/api/v1/auth/register/student").permitAll()
                       .requestMatchers(HttpMethod.GET,"/students").permitAll()
                       .requestMatchers(HttpMethod.GET,"/AllStudents").permitAll()
                       .requestMatchers(HttpMethod.GET, "/teachers").permitAll()
                       .requestMatchers(HttpMethod.GET, "/AllTeachers").permitAll()
-                      .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-                      .requestMatchers(HttpMethod.POST,"/events").hasRole("ADMIN")
+//                      .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
+//                      .requestMatchers(HttpMethod.POST,"/events").hasRole("ADMIN")
                       .anyRequest().authenticated();
             })
 

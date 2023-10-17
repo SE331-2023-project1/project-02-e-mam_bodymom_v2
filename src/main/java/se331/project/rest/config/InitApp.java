@@ -107,6 +107,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userS1.setPassword(encoder.encode("student1"));
         userS1.setFirstname("Thiwakon");
         userS1.setLastname("Sakunchao");
+        userS1.setRoles(List.of(Role.ROLE_STUDENT));
         userRepository.save(userS1);
 
         Student student1 = new Student();
@@ -119,6 +120,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userS2.setPassword(encoder.encode("student2"));
         userS2.setFirstname("Sorawee");
         userS2.setLastname("Sakunchao");
+        userS2.setRoles(List.of(Role.ROLE_STUDENT));
         userRepository.save(userS2);
 
         Student student2 = new Student();
@@ -131,6 +133,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userS3.setPassword(encoder.encode("student3"));
         userS3.setFirstname("Pattanachai");
         userS3.setLastname("Sakunchao");
+        userS3.setRoles(List.of(Role.ROLE_STUDENT));
         userRepository.save(userS3);
 
         Student student3 = new Student();
@@ -143,6 +146,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userS4.setPassword(encoder.encode("student4"));
         userS4.setFirstname("Taninwat");
         userS4.setLastname("Sakunchao");
+        userS4.setRoles(List.of(Role.ROLE_STUDENT));
         userRepository.save(userS4);
 
         Student student4 = new Student();

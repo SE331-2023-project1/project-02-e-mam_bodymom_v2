@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import se331.project.rest.security.user.Role;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,5 +22,5 @@ public class TeacherDTO {
     List<String> images;
     String department;
     List<TeacherOwnStudentDTO> ownStudent = new ArrayList<>();
-
+    List<Role> roles = new ArrayList<>();
 }
