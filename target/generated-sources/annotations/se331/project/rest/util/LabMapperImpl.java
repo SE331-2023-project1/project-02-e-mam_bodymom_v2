@@ -3,6 +3,8 @@ package se331.project.rest.util;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
+import se331.project.rest.entity.Announcement;
+import se331.project.rest.entity.AnnouncementDTO;
 import se331.project.rest.entity.Student;
 import se331.project.rest.entity.StudentDTO;
 import se331.project.rest.entity.StudentTeacherDTO;
@@ -14,7 +16,7 @@ import se331.project.rest.security.user.User;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2566-10-18T02:00:52+0700",
+    date = "2566-10-18T02:56:17+0700",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.8 (Oracle Corporation)"
 )
 public class LabMapperImpl implements LabMapper {
@@ -99,6 +101,35 @@ public class LabMapperImpl implements LabMapper {
         studentDTO.department( student.getDepartment() );
 
         return studentDTO.build();
+    }
+
+    @Override
+    public AnnouncementDTO getAnnouncementDTO(Announcement announcement) {
+        if ( announcement == null ) {
+            return null;
+        }
+
+        AnnouncementDTO.AnnouncementDTOBuilder announcementDTO = AnnouncementDTO.builder();
+
+        announcementDTO.id( announcement.getId() );
+        announcementDTO.title( announcement.getTitle() );
+        announcementDTO.description( announcement.getDescription() );
+
+        return announcementDTO.build();
+    }
+
+    @Override
+    public List<AnnouncementDTO> getAnnouncementDTO(List<Announcement> announcement) {
+        if ( announcement == null ) {
+            return null;
+        }
+
+        List<AnnouncementDTO> list = new ArrayList<AnnouncementDTO>( announcement.size() );
+        for ( Announcement announcement1 : announcement ) {
+            list.add( getAnnouncementDTO( announcement1 ) );
+        }
+
+        return list;
     }
 
     protected TeacherOwnStudentDTO studentToTeacherOwnStudentDTO(Student student) {

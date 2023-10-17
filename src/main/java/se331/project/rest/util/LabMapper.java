@@ -24,4 +24,6 @@ public interface LabMapper {
     @Mapping(source = "user.lastname", target = "surname")
     @Mapping(source = "user.roles", target = "roles")
     StudentDTO getStudentDTO(Student student);
+    AnnouncementDTO getAnnouncementDTO(Announcement announcement);
+    List <AnnouncementDTO> getAnnouncementDTO(List<Announcement> announcement);
 }
