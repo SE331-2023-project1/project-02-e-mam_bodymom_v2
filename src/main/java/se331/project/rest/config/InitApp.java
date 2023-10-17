@@ -68,7 +68,13 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .surname("Sakunchao").build());
         tempStudent.setTeacher(t3);
         t3.getOwnStudent().add(tempStudent);
+
         addUser();
+        t1.setUser(user2);
+        user2.setTeacher(t1);
+        tempStudent.setUser(user3);
+        user3.setStudent(tempStudent);
+
     }
     User user1, user2, user3;
     private void addUser() {
@@ -82,20 +88,20 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .roles(List.of(Role.ROLE_ADMIN))
                 .build();
         user2 = User.builder()
-                .username("user")
-                .password(encoder.encode("user"))
-                .firstname("user")
-                .lastname("user")
+                .username("teacher")
+                .password(encoder.encode("teacher"))
+                .firstname("teacher")
+                .lastname("teacher")
                 .email("enabled@user.com")
-                .roles(List.of(Role.ROLE_DISTRIBUTOR))
+                .roles(List.of(Role.ROLE_TEACHER))
                 .build();
         user3 = User.builder()
-                .username("disableUser")
-                .password(encoder.encode("disableUser"))
-                .firstname("disableUser")
-                .lastname("disableUser")
+                .username("student")
+                .password(encoder.encode("student"))
+                .firstname("student")
+                .lastname("student")
                 .email("disableUser@user.com")
-                .roles(List.of(Role.ROLE_FASTFIT))
+                .roles(List.of(Role.ROLE_STUDENT))
                 .build();
 
         userRepository.save(user1);

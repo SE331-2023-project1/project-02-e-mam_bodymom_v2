@@ -2,6 +2,8 @@ package se331.project.rest.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import se331.project.rest.security.user.User;
+
 import java.util.List;
 
 @Data
@@ -21,4 +23,6 @@ public class Student {
     String department;
     @ManyToOne
     Teacher teacher;
+    @OneToOne
+    User user;
 }

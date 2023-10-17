@@ -1,11 +1,9 @@
 package se331.project.rest.util;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
-import se331.project.rest.entity.Student;
-import se331.project.rest.entity.StudentDTO;
-import se331.project.rest.entity.Teacher;
-import se331.project.rest.entity.TeacherDTO;
+import se331.project.rest.entity.*;
 
 import java.util.List;
 

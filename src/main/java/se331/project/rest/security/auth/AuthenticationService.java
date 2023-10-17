@@ -38,7 +38,7 @@ public class AuthenticationService {
             .lastname(request.getLastname())
             .email(request.getEmail())
             .password(passwordEncoder.encode(request.getPassword()))
-            .roles(List.of(Role.ROLE_DISTRIBUTOR))
+            .roles(List.of(Role.ROLE_TEACHER))
             .build();
     var savedUser = repository.save(user);
     var jwtToken = jwtService.generateToken(user);
@@ -62,11 +62,15 @@ public class AuthenticationService {
 
     String jwtToken = jwtService.generateToken(user);
     String refreshToken = jwtService.generateRefreshToken(user);
+    List<Role> userRoles = user.getRoles();
+
 //    revokeAllUserTokens(user);
     saveUserToken(user, jwtToken);
+//    System.out.println(user);
     return AuthenticationResponse.builder()
             .accessToken(jwtToken)
             .refreshToken(refreshToken)
+            .userRole(userRoles)
 //            .user(LabMapper.INSTANCE.getOrganizerAuthDTO(user.getOrganizer()))
             .build();
   }
