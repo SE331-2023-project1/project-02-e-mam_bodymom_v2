@@ -34,6 +34,7 @@ public class AuthenticationService {
 
   public AuthenticationResponse register(RegisterRequest request) {
     User user = User.builder()
+            .username(request.getUsername())
             .firstname(request.getFirstname())
             .lastname(request.getLastname())
             .email(request.getEmail())
@@ -46,7 +47,7 @@ public class AuthenticationService {
     saveUserToken(savedUser, jwtToken);
     return AuthenticationResponse.builder()
         .accessToken(jwtToken)
-            .refreshToken(refreshToken)
+        .refreshToken(refreshToken)
         .build();
   }
 
