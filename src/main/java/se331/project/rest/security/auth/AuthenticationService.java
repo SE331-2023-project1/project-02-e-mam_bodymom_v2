@@ -100,6 +100,13 @@ public class AuthenticationService {
     String refreshToken = jwtService.generateRefreshToken(user);
     List<Role> userRoles = user.getRoles();
     Integer id = user.getId();
+    if (user.getTeacher() != null) {
+      Long teacherId = user.getTeacher().getId();
+      id = Math.toIntExact(teacherId);
+    } else if (user.getStudent() != null){
+      Long studentId = user.getStudent().getId();
+      id = Math.toIntExact(studentId);
+    }
 
 //    revokeAllUserTokens(user);
     saveUserToken(user, jwtToken);

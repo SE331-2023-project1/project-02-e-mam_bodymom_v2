@@ -179,6 +179,29 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         student4.setUser(userS4);
         student4.setTeacher(teacher2);
 
+        //Test mapping between user id and teacher id
+//        User userT3 = new User();
+//        userT3.setUsername("OO");
+//        userT3.setPassword(encoder.encode("OO"));
+//        userT3.setFirstname("Tei");
+//        userT3.setLastname("Pattama");
+//        userT3.setRoles(List.of(Role.ROLE_TEACHER));
+//        userT3.setDepartment("Software Engineer");
+//        userRepository.save(userT3);
+//
+//        Teacher teacher3 = new Teacher();
+//        teacher3.setUser(userT3);
+//        teacherRepository.save(teacher3);
+//
+//        teacher3.setUser(userT3);
+//        teacher3.getOwnStudent().add(student1);
+//        teacher3.getOwnStudent().add(student2);
+//        student1.setUser(userS1);
+//        student1.setTeacher(teacher3);
+//        student2.setUser(userS2);
+//        student2.setTeacher(teacher3);
+        //
+
         User admin;
         admin = User.builder()
                 .username("admin")
