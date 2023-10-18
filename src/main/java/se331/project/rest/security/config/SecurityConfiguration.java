@@ -40,6 +40,7 @@ public class SecurityConfiguration {
                       .requestMatchers(HttpMethod.GET,"/AllStudents").permitAll()
                       .requestMatchers(HttpMethod.GET, "/teachers").permitAll()
                       .requestMatchers(HttpMethod.GET, "/AllTeachers").permitAll()
+                      .requestMatchers(HttpMethod.GET, "/studentsByTeacher/**").permitAll()
                       .requestMatchers(HttpMethod.POST, "/announcement").hasRole("TEACHER")
 //                      .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
 //                      .requestMatchers(HttpMethod.POST,"/events").hasRole("ADMIN")

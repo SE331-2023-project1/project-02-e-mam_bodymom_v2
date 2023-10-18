@@ -21,4 +21,6 @@ public class AuthenticationResponse {
   private String refreshToken;
   @JsonProperty("user_role")
   private List<Role> userRole;
+  @JsonProperty("id")
+  private Integer id;
 }

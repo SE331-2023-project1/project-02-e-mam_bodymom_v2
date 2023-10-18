@@ -99,6 +99,7 @@ public class AuthenticationService {
     String jwtToken = jwtService.generateToken(user);
     String refreshToken = jwtService.generateRefreshToken(user);
     List<Role> userRoles = user.getRoles();
+    Integer id = user.getId();
 
 //    revokeAllUserTokens(user);
     saveUserToken(user, jwtToken);
@@ -107,6 +108,7 @@ public class AuthenticationService {
             .accessToken(jwtToken)
             .refreshToken(refreshToken)
             .userRole(userRoles)
+            .id(id)
 //            .user(LabMapper.INSTANCE.getOrganizerAuthDTO(user.getOrganizer()))
             .build();
   }

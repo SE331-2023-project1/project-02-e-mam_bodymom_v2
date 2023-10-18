@@ -2,6 +2,7 @@ package se331.project.rest.service;
 
 
 import se331.project.rest.dao.StudentDao;
+import se331.project.rest.dao.TeacherDao;
 import se331.project.rest.entity.Student;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -14,6 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
     final StudentDao studentDao;
+    final TeacherDao teacherDao;
     @Override
     public Integer getStudentsSize() {
         return studentDao.getStudentSize();
@@ -38,6 +40,10 @@ public class StudentServiceImpl implements StudentService {
         return studentDao.getStudent(id);
     }
 
+    @Override
+    public List<Student> getStudentsByTeacher(Long id) {
+        return teacherDao.getTeacher(id).getOwnStudent();
+    }
     @Override
     public Student save(Student student) {
         return studentDao.save(student);
