@@ -18,4 +18,6 @@ public interface TeacherService {
     Teacher getTeacher(Long id);
 
     Teacher save(Teacher teacher);
+
+    Teacher updateDetail(Teacher teacher);
 }
