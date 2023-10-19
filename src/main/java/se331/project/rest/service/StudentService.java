@@ -23,4 +23,6 @@ public interface StudentService {
 
     Student save(Student student);
 
+    Student updateDetail(Student student);
+
 }

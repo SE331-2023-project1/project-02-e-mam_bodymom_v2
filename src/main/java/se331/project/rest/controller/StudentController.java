@@ -6,10 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import se331.project.rest.entity.Student;
 import se331.project.rest.entity.Teacher;
@@ -37,6 +34,12 @@ public class StudentController {
     @GetMapping("AllStudents")
     public ResponseEntity<?> getStudents() {
         return ResponseEntity.ok(LabMapper.INSTANCE.getStudentDTO(studentService.getAllStudents()));
+    }
+
+    @PutMapping("updatestudents")
+    public ResponseEntity<?> updateStudentDetails(@RequestBody Student student)
+    {
+        return ResponseEntity.ok(LabMapper.INSTANCE.getStudentDTO(studentService.updateDetail(student)));
     }
 
     @GetMapping("studentsByTeacher/{id}")

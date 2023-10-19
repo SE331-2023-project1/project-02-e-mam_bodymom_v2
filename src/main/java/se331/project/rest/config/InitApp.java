@@ -118,6 +118,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
         Student student1 = new Student();
         student1.setUser(userS1);
+        student1.setTeacher(teacher1);
         studentRepository.save(student1);
 
 
