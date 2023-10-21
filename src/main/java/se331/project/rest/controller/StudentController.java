@@ -37,6 +37,7 @@ public class StudentController {
     }
 
     @PutMapping("updatestudents")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> updateStudentDetails(@RequestBody Student student)
     {
         return ResponseEntity.ok(LabMapper.INSTANCE.getStudentDTO(studentService.updateDetail(student)));

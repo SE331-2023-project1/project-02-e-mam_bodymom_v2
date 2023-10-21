@@ -19,7 +19,10 @@ public class Project02EMamBodymomV2Application {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
-						.allowedOrigins("http://localhost:3000").exposedHeaders("x-total-count");
+						.allowedOrigins("http://localhost:3000").exposedHeaders("x-total-count")
+						.allowedMethods("GET","POST","PUT","DELETE","HEAD","OPITOINS")
+						.allowCredentials(true)
+						.allowedHeaders("Origin","Authorization","application/json","Content-Type");
 
 			}
 		};
