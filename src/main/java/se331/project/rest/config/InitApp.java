@@ -17,6 +17,7 @@ import se331.project.rest.security.user.Role;
 import se331.project.rest.security.user.User;
 import se331.project.rest.security.user.UserRepository;
 
+import java.util.Collections;
 import java.util.List;
 
 @Component
@@ -86,6 +87,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userT1.setLastname("Passakorn");
         userT1.setRoles(List.of(Role.ROLE_TEACHER));
         userT1.setDepartment("Software Engineer");
+        userT1.setImages(Collections.singletonList("https://shorturl.at/qzH69"));
         userRepository.save(userT1);
 
         Teacher teacher1 = new Teacher();
@@ -99,6 +101,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userT2.setLastname("Pathathai");
         userT2.setRoles(List.of(Role.ROLE_TEACHER));
         userT2.setDepartment("Software Engineer");
+        userT2.setImages(Collections.singletonList("https://shorturl.at/bhjVY"));
         userRepository.save(userT2);
 
         Teacher teacher2 = new Teacher();
@@ -114,6 +117,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userS1.setLastname("Sakunchao");
         userS1.setRoles(List.of(Role.ROLE_STUDENT));
         userS1.setDepartment("Software Engineer");
+        userS1.setImages(Collections.singletonList("https://rebrand.ly/xz81uz9"));
         userRepository.save(userS1);
 
         Student student1 = new Student();
@@ -129,6 +133,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userS2.setLastname("Sakunchao");
         userS2.setRoles(List.of(Role.ROLE_STUDENT));
         userS2.setDepartment("Com Sci");
+        userS2.setImages(Collections.singletonList("https://rb.gy/1jp8m"));
         userRepository.save(userS2);
 
         Student student2 = new Student();
@@ -143,6 +148,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userS3.setLastname("Sakunchao");
         userS3.setRoles(List.of(Role.ROLE_STUDENT));
         userS3.setDepartment("Mathematics");
+        userS3.setImages(Collections.singletonList("https://rebrand.ly/nvnjnhm"));
         userRepository.save(userS3);
 
         Student student3 = new Student();
@@ -157,6 +163,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userS4.setLastname("Sakunchao");
         userS4.setRoles(List.of(Role.ROLE_STUDENT));
         userS4.setDepartment("Economics");
+        userS4.setImages(Collections.singletonList("https://rebrand.ly/35uqc75"));
         userRepository.save(userS4);
 
         Student student4 = new Student();
