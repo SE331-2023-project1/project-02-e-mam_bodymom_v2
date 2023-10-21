@@ -221,6 +221,21 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .description("Final Exam is tomorrow.").build();
         announcementRepository.save(announcement);
 
+        User userOP = new User();
+        userOP.setUsername("oo");
+        userOP.setPassword(encoder.encode("oo"));
+        userOP.setFirstname("PP");
+        userOP.setLastname("PP");
+        userOP.setRoles(List.of(Role.ROLE_STUDENT));
+        userOP.setDepartment("PP");
+        userRepository.save(userOP);
+
+        Student studentOP = new Student();
+        studentOP.setUser(userOP);
+        studentRepository.save(studentOP);
+        teacher1.getOwnStudent().add(studentOP);
+        studentOP.setTeacher(teacher1);
+
     }
 //    User user1, user2, user3;
 //    private void addUser() {
