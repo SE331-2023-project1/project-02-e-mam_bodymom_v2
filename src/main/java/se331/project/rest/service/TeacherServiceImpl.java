@@ -1,5 +1,6 @@
 package se331.project.rest.service;
 
+import se331.project.rest.dao.StudentDao;
 import se331.project.rest.dao.TeacherDao;
 import se331.project.rest.entity.Student;
 import se331.project.rest.entity.Teacher;
@@ -16,6 +17,7 @@ import java.util.List;
 public class TeacherServiceImpl implements TeacherService{
 
     final TeacherDao teacherDao;
+    final StudentDao studentDao;
     final UserDao userDao;
     @Override
     public Integer getTeachersSize() {
@@ -38,6 +40,11 @@ public class TeacherServiceImpl implements TeacherService{
     }
 
     @Override
+    public Teacher getTeacherByStudent(Long id) {
+        return studentDao.getStudent(id).getTeacher();
+    }
+
+    @Override
     public Teacher save(Teacher teacher) {
         return teacherDao.save(teacher);
     }
@@ -49,7 +56,7 @@ public class TeacherServiceImpl implements TeacherService{
 
             updateTeacher.getUser().setFirstname(teacher.getName());
             updateTeacher.getUser().setLastname(teacher.getSurname());
-            updateTeacher.getUser().setDepartment(teacher.getDepartment());
+//            updateTeacher.getUser().setDepartment(teacher.getDepartment());
 
             teacherDao.save(updateTeacher);
 

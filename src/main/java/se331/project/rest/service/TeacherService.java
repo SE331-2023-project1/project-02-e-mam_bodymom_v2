@@ -2,6 +2,7 @@ package se331.project.rest.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import se331.project.rest.entity.Student;
 import  se331.project.rest.entity.Teacher;
 
 import java.util.List;
@@ -20,4 +21,6 @@ public interface TeacherService {
     Teacher save(Teacher teacher);
 
     Teacher updateDetail(Teacher teacher);
+
+    Teacher getTeacherByStudent(Long id);
 }
