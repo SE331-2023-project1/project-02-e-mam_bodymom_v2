@@ -11,6 +11,10 @@ spring:
   profiles:
     active:
       - db
+  servlet:
+    multipart:
+      max-file-size: 10MB
+
 application:
   security:
     jwt:
