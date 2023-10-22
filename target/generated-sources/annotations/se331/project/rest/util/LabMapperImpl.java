@@ -16,8 +16,8 @@ import se331.project.rest.security.user.User;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-10-22T03:17:07+0700",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.7 (Oracle Corporation)"
+    date = "2566-10-23T03:52:08+0700",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.8 (Oracle Corporation)"
 )
 public class LabMapperImpl implements LabMapper {
 
@@ -58,6 +58,7 @@ public class LabMapperImpl implements LabMapper {
             teacherDTO.images( new ArrayList<String>( list2 ) );
         }
         teacherDTO.department( teacherUserDepartment( teacher ) );
+        teacherDTO.academic( teacherUserAcademic( teacher ) );
         teacherDTO.id( teacher.getId() );
 
         return teacherDTO.build();
@@ -120,6 +121,7 @@ public class LabMapperImpl implements LabMapper {
         if ( list != null ) {
             announcementDTO.files( new ArrayList<String>( list ) );
         }
+        announcementDTO.user( announcement.getUser() );
 
         return announcementDTO.build();
     }
@@ -253,6 +255,21 @@ public class LabMapperImpl implements LabMapper {
             return null;
         }
         return department;
+    }
+
+    private String teacherUserAcademic(Teacher teacher) {
+        if ( teacher == null ) {
+            return null;
+        }
+        User user = teacher.getUser();
+        if ( user == null ) {
+            return null;
+        }
+        String academic = user.getAcademic();
+        if ( academic == null ) {
+            return null;
+        }
+        return academic;
     }
 
     protected StudentTeacherDTO teacherToStudentTeacherDTO(Teacher teacher) {

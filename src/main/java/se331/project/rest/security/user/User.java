@@ -41,6 +41,7 @@ public class User implements UserDetails {
   @ElementCollection
   private List<String> images;
   private String department;
+  private String academic;
   private String title;
   private String description;
   @ElementCollection

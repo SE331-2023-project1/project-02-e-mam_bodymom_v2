@@ -22,6 +22,7 @@ public class Teacher {
     @ElementCollection
     List<String> images;
     String department;
+    String academic;
     @OneToMany(mappedBy = "teacher")
     @Builder.Default
     List<Student> ownStudent = new ArrayList<>();

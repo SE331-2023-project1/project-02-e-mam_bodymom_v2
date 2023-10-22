@@ -88,6 +88,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userT1.setLastname("Passakorn");
         userT1.setRoles(List.of(Role.ROLE_TEACHER));
         userT1.setDepartment("Software Engineer");
+        userT1.setAcademic("PhD");
         userT1.setImages(Collections.singletonList("https://shorturl.at/qzH69"));
         userRepository.save(userT1);
 
@@ -102,6 +103,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userT2.setLastname("Pathathai");
         userT2.setRoles(List.of(Role.ROLE_TEACHER));
         userT2.setDepartment("Software Engineer");
+        userT2.setAcademic("PhD");
         userT2.setImages(Collections.singletonList("https://shorturl.at/bhjVY"));
         userRepository.save(userT2);
 
@@ -112,8 +114,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
 
         User userS1 = new User();
-        userS1.setUsername("student1");
-        userS1.setPassword(encoder.encode("student1"));
+        userS1.setUsername("642115020");
+        userS1.setPassword(encoder.encode("642115020"));
         userS1.setFirstname("Thiwakon");
         userS1.setLastname("Sakunchao");
         userS1.setRoles(List.of(Role.ROLE_STUDENT));
@@ -128,12 +130,12 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
 
         User userS2 = new User();
-        userS2.setUsername("student2");
-        userS2.setPassword(encoder.encode("student2"));
-        userS2.setFirstname("Sorawee");
-        userS2.setLastname("Sakunchao");
+        userS2.setUsername("642115021");
+        userS2.setPassword(encoder.encode("642115021"));
+        userS2.setFirstname("Thanakorn");
+        userS2.setLastname("Waleejaroenpong");
         userS2.setRoles(List.of(Role.ROLE_STUDENT));
-        userS2.setDepartment("Com Sci");
+        userS2.setDepartment("Software Engineer");
         userS2.setImages(Collections.singletonList("https://rb.gy/1jp8m"));
         userRepository.save(userS2);
 
@@ -143,12 +145,12 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
 
         User userS3 = new User();
-        userS3.setUsername("student3");
-        userS3.setPassword(encoder.encode("student3"));
-        userS3.setFirstname("Pattanachai");
-        userS3.setLastname("Sakunchao");
+        userS3.setUsername("642115026");
+        userS3.setPassword(encoder.encode("642115026"));
+        userS3.setFirstname("Phacharanan");
+        userS3.setLastname("Thumjaikul");
         userS3.setRoles(List.of(Role.ROLE_STUDENT));
-        userS3.setDepartment("Mathematics");
+        userS3.setDepartment("Software Engineer");
         userS3.setImages(Collections.singletonList("https://rebrand.ly/nvnjnhm"));
         userRepository.save(userS3);
 
@@ -158,8 +160,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
 
         User userS4 = new User();
-        userS4.setUsername("student4");
-        userS4.setPassword(encoder.encode("student4"));
+        userS4.setUsername("642115019");
+        userS4.setPassword(encoder.encode("642115019"));
         userS4.setFirstname("Taninwat");
         userS4.setLastname("Sakunchao");
         userS4.setRoles(List.of(Role.ROLE_STUDENT));
@@ -235,28 +237,31 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build();
         announcementRepository.save(announcement);
 
+        List<String> files2 = new ArrayList<>();
+        files2.add("https://storage.googleapis.com/download/storage/v1/b/imageupload-f10a5.appspot.com/o/2566-10-23%20040102232-263Final-Formula.pdf?generation=1698008463101860&alt=media");
+
         Announcement announcement2;
         announcement2 = Announcement.builder()
-                .title("Wowwwwwww")
-                .description("eieieie")
-                .files(files)
+                .title("Final exam formula")
+                .description("This is statistic formula for final exam.")
+                .files(files2)
                 .build();
         announcementRepository.save(announcement2);
 
-        User userOP = new User();
-        userOP.setUsername("oo");
-        userOP.setPassword(encoder.encode("oo"));
-        userOP.setFirstname("PP");
-        userOP.setLastname("PP");
-        userOP.setRoles(List.of(Role.ROLE_STUDENT));
-        userOP.setDepartment("PP");
-        userRepository.save(userOP);
-
-        Student studentOP = new Student();
-        studentOP.setUser(userOP);
-        studentRepository.save(studentOP);
-        teacher1.getOwnStudent().add(studentOP);
-        studentOP.setTeacher(teacher1);
+//        User userOP = new User();
+//        userOP.setUsername("oo");
+//        userOP.setPassword(encoder.encode("oo"));
+//        userOP.setFirstname("PP");
+//        userOP.setLastname("PP");
+//        userOP.setRoles(List.of(Role.ROLE_STUDENT));
+//        userOP.setDepartment("PP");
+//        userRepository.save(userOP);
+//
+//        Student studentOP = new Student();
+//        studentOP.setUser(userOP);
+//        studentRepository.save(studentOP);
+//        teacher1.getOwnStudent().add(studentOP);
+//        studentOP.setTeacher(teacher1);
 
     }
 //    User user1, user2, user3;

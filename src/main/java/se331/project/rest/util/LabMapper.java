@@ -18,6 +18,7 @@ public interface LabMapper {
     @Mapping(source = "user.roles", target = "roles")
     @Mapping(source = "user.images", target = "images")
     @Mapping(source = "user.department", target = "department")
+    @Mapping(source = "user.academic", target = "academic")
     TeacherDTO getTeacherDTO(Teacher teacher);
     List<TeacherDTO> getTeacherDTO(List<Teacher> teachers);
     @Mapping(source = "teacher", target = "teacher")
