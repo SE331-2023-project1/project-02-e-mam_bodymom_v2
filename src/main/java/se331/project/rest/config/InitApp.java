@@ -17,6 +17,7 @@ import se331.project.rest.security.user.Role;
 import se331.project.rest.security.user.User;
 import se331.project.rest.security.user.UserRepository;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -221,12 +222,26 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build();
         userRepository.save(admin);
 
+        List<String> files = new ArrayList<>();
+
+        files.add("https://rb.gy/1jp8m");
+        files.add("https://rebrand.ly/xz81uz9");
 
         Announcement announcement;
         announcement = Announcement.builder()
                 .title("Final Exam")
-                .description("Final Exam is tomorrow.").build();
+                .description("Final Exam is tomorrow.")
+                .files(files)
+                .build();
         announcementRepository.save(announcement);
+
+        Announcement announcement2;
+        announcement2 = Announcement.builder()
+                .title("Wowwwwwww")
+                .description("eieieie")
+                .files(files)
+                .build();
+        announcementRepository.save(announcement2);
 
         User userOP = new User();
         userOP.setUsername("oo");
