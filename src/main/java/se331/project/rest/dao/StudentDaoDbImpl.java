@@ -40,4 +40,8 @@ public class StudentDaoDbImpl implements StudentDao {
         return studentRepository.findById(id).orElse(null);
     }
 
+    @Override
+    public Page<Student> getStudents(String filter, Pageable page) {
+        return studentRepository.findByUser_FirstnameIgnoreCaseContainingOrUser_LastnameIgnoreCaseContainingOrUser_UsernameIgnoreCaseContaining(filter,filter,filter,page);
+    }
 }

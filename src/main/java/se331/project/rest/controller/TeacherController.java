@@ -1,5 +1,6 @@
 package se331.project.rest.controller;
 
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 import se331.project.rest.entity.Student;
 import  se331.project.rest.entity.Teacher;
@@ -22,14 +23,34 @@ public class TeacherController {
 
     @GetMapping("teachers")
     public ResponseEntity<?> getTeacherLists(@RequestParam(value = "_limit", required = false) Integer perPage,
-                                             @RequestParam(value = "_page", required = false) Integer page) {
-        Page<Teacher> pageOutput = teacherService.getTeachers(perPage, page);
+                                             @RequestParam(value = "_page", required = false) Integer page,
+                                             @RequestParam(value = "filter", required = false) String filter) {
+        perPage = perPage == null ? 3 : perPage;
+        page = page == null ? 1 : page;
+        Page<Teacher> pageOutput;
+        if (filter == null) {
+            pageOutput = teacherService.getTeachers(perPage,page);
+        }else{
+            pageOutput = teacherService.getTeachers(filter, PageRequest.of(page-1,perPage));
+        }
         HttpHeaders responseHeader = new HttpHeaders();
         responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
         return new ResponseEntity<>(LabMapper.INSTANCE.getTeacherDTO(pageOutput.getContent()),responseHeader, HttpStatus.OK);
     }
     @GetMapping("AllTeachers")
-    public ResponseEntity<?> getTeachers() {
+    public ResponseEntity<?> getTeachers(@RequestParam(value = "_limit", required = false) Integer perPage,
+                                         @RequestParam(value = "_page", required = false) Integer page,
+                                         @RequestParam(value = "filter", required = false) String filter) {
+        perPage = perPage == null ? 3 : perPage;
+        page = page == null ? 1 : page;
+        Page<Teacher> pageOutput;
+        if (filter == null) {
+            pageOutput = teacherService.getTeachers(perPage,page);
+        }else{
+            pageOutput = teacherService.getTeachers(filter, PageRequest.of(page-1,perPage));
+        }
+        HttpHeaders responseHeader = new HttpHeaders();
+        responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
         return ResponseEntity.ok(LabMapper.INSTANCE.getTeacherDTO(teacherService.getAllTeachers()));
     }
 

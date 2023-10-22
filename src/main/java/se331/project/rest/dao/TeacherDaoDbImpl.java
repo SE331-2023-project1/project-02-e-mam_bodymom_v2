@@ -1,5 +1,6 @@
 package se331.project.rest.dao;
 
+import se331.project.rest.entity.Student;
 import se331.project.rest.entity.Teacher;
 import se331.project.rest.repository.TeacherRepository;
 import lombok.RequiredArgsConstructor;
@@ -37,5 +38,10 @@ public class TeacherDaoDbImpl implements TeacherDao {
     @Override
     public Teacher getTeacher(Long id) {
         return teacherRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Page<Teacher> getTeachers(String filter, Pageable page) {
+        return teacherRepository.findByUser_FirstnameIgnoreCaseContainingOrUser_LastnameIgnoreCaseContainingOrUser_UsernameIgnoreCaseContaining(filter,filter,filter,page);
     }
 }

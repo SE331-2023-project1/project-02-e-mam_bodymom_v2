@@ -14,6 +14,8 @@ public interface TeacherService {
 
     Page<Teacher> getTeachers(Integer pageSize, Integer page);
 
+    Page<Teacher> getTeachers(String filter, Pageable pageable);
+
     List<Teacher> getAllTeachers();
 
     Teacher getTeacher(Long id);

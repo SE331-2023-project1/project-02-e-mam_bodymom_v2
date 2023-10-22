@@ -3,6 +3,7 @@ package se331.project.rest.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,14 +26,34 @@ public class StudentController {
     final UserService userService;
     @GetMapping("students")
     public ResponseEntity<?> getStudentLists(@RequestParam(value = "_limit", required = false) Integer perPage,
-                                             @RequestParam(value = "_page", required = false) Integer page) {
-        Page<Student> pageOutput = studentService.getStudents(perPage, page);
+                                             @RequestParam(value = "_page", required = false) Integer page,
+                                             @RequestParam(value = "filter", required = false) String filter) {
+        perPage = perPage == null ? 3 : perPage;
+        page = page == null ? 1 : page;
+        Page<Student> pageOutput;
+        if (filter == null) {
+            pageOutput = studentService.getStudents(perPage,page);
+        }else{
+            pageOutput = studentService.getStudents(filter, PageRequest.of(page-1,perPage));
+        }
         HttpHeaders responseHeader = new HttpHeaders();
         responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
         return new ResponseEntity<>(LabMapper.INSTANCE.getStudentDTO(pageOutput.getContent()),responseHeader,HttpStatus.OK);
     }
     @GetMapping("AllStudents")
-    public ResponseEntity<?> getStudents() {
+    public ResponseEntity<?> getStudents(@RequestParam(value = "_limit", required = false) Integer perPage,
+                                         @RequestParam(value = "_page", required = false) Integer page,
+                                         @RequestParam(value = "filter", required = false) String filter) {
+        perPage = perPage == null ? 3 : perPage;
+        page = page == null ? 1 : page;
+        Page<Student> pageOutput;
+        if (filter == null) {
+            pageOutput = studentService.getStudents(perPage,page);
+        }else{
+            pageOutput = studentService.getStudents(filter, PageRequest.of(page-1,perPage));
+        }
+        HttpHeaders responseHeader = new HttpHeaders();
+        responseHeader.set("x-total-count", String.valueOf(pageOutput.getTotalElements()));
         return ResponseEntity.ok(LabMapper.INSTANCE.getStudentDTO(studentService.getAllStudents()));
     }
 

@@ -31,8 +31,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Page<Student> getStudents(String title, Pageable pageable) {
-        return null;
+    public Page<Student> getStudents(String filter, Pageable pageable) {
+        return studentDao.getStudents(filter,pageable);
     }
     @Override
     public List<Student> getAllStudents() {
