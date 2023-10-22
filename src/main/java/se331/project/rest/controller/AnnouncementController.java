@@ -13,6 +13,7 @@ public class AnnouncementController {
     final AnnouncementService announcementService;
 
     @GetMapping("announcement")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> getAnnouncements() {
         return ResponseEntity.ok(LabMapper.INSTANCE.getAnnouncementDTO(announcementService.getAnnouncements()));
     }

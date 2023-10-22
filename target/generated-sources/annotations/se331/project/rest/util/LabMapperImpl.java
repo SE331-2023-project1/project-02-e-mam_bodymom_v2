@@ -16,7 +16,7 @@ import se331.project.rest.security.user.User;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2566-10-21T23:09:01+0700",
+    date = "2566-10-22T21:28:50+0700",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.8 (Oracle Corporation)"
 )
 public class LabMapperImpl implements LabMapper {
@@ -120,6 +120,7 @@ public class LabMapperImpl implements LabMapper {
         if ( list != null ) {
             announcementDTO.files( new ArrayList<String>( list ) );
         }
+        announcementDTO.user( announcement.getUser() );
 
         return announcementDTO.build();
     }

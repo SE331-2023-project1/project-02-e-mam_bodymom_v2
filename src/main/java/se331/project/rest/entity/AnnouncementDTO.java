@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import se331.project.rest.security.user.User;
 
 import java.util.List;
 
@@ -17,4 +18,5 @@ public class AnnouncementDTO {
     String title;
     String description;
     List<String> files;
+    User user;
 }
