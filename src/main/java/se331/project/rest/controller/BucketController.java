@@ -22,14 +22,14 @@ public class BucketController {
     final CloudStorageHelper cloudStorageHelper;
 
     @PostMapping("/uploadFile")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "http://localhost:3000 , http://18.208.106.67:8001")
     public ResponseEntity<?> uploadFile(@RequestPart(value = "file")MultipartFile file)
             throws ServletException, IOException {
         return ResponseEntity.ok(this.cloudStorageHelper.getImageUrl(file,"imageupload-f10a5.appspot.com"));
     }
 
     @PostMapping("/uploadImage")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "http://localhost:3000 , http://18.208.106.67:8001")
     public ResponseEntity<?> uploadFileComponent(@RequestPart(value = "image")MultipartFile file) throws IOException, ServletException {
         return ResponseEntity.ok(this.cloudStorageHelper.getStorageFileDto(file, "imageupload-f10a5.appspot.com"));
     }
