@@ -26,6 +26,7 @@ import se331.project.rest.util.LabMapper;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -50,8 +51,11 @@ public class AuthenticationService {
             .images(request.getImages())
             .build();
     var savedUser = repository.save(userStudent);
+    Teacher teacher = new Teacher();
+    teacher = teacherRepository.getById(1L).getUser().getTeacher();
     Student student = new Student();
     student.setUser(savedUser);
+    student.setTeacher(teacher);
     studentRepository.save(student);
     var jwtToken = jwtService.generateToken(userStudent);
     var refreshToken = jwtService.generateRefreshToken(userStudent);
