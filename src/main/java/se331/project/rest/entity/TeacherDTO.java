@@ -21,6 +21,7 @@ public class TeacherDTO {
     String surname;
     List<String> images;
     String department;
+    String academic;
     List<TeacherOwnStudentDTO> ownStudent = new ArrayList<>();
     List<Role> roles = new ArrayList<>();
 }
