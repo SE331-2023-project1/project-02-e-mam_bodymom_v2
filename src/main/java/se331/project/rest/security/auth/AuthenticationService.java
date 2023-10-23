@@ -77,6 +77,8 @@ public class AuthenticationService {
             .password(passwordEncoder.encode(request.getPassword()))
             .roles(List.of(Role.ROLE_TEACHER))
             .images(request.getImages())
+            .department(request.getDepartment())
+            .academic(request.getAcademic())
             .build();
     var savedUser = repository.save(userTeacher);
     Teacher teacher = new Teacher();

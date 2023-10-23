@@ -19,4 +19,6 @@ public class RegisterRequest {
   private String email;
   private String password;
   private List<String> images;
+  private String department;
+  private String academic;
 }
