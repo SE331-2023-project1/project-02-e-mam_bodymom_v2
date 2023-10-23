@@ -53,39 +53,52 @@ public class CloudStorageHelper {
         return blobInfo.getMediaLink();
     }
 
+//    public String getImageUrl(MultipartFile file, final String bucket) throws IOException, ServletException {
+//        final String fileName = file.getOriginalFilename();
+//        if (fileName != null && !fileName.isEmpty() && fileName.contains(".")) {
+//            final String extension = fileName.substring(fileName.lastIndexOf('.')+ 1);
+//            String[] allowedExt = { "jpg", "jpeg", "png", "gif" };
+//            for (String s : allowedExt) {
+//                if (extension.equals(s)) {
+//                    return this.uploadFile(file, bucket);
+//                }
+//            }
+//            throw new ServletException("file must be an image");
+//        }
+//        return null;
+//    }
+
+
+//    public StorageFileDTO getStorageFileDto(MultipartFile file, final String bucket)
+//            throws IOException, ServletException {
+//        final String fileName = file.getOriginalFilename();
+//        // Check file extension
+//
+//        if (fileName != null && !fileName.isEmpty() && fileName.contains(".")) {
+//            final String extension = fileName.substring(fileName.lastIndexOf('.')+ 1);
+//            String[] allowedExt = { "jpg", "jpeg", "png", "gif" };
+//            for (String s : allowedExt) {
+//                if (extension.equals(s)) {
+//                    String urlName = this.uploadFile(file, bucket);
+//                    return StorageFileDTO.builder().name(urlName).build();
+//                }
+//            }
+//            throw new ServletException("file must be an image");
+//        }
+//        return null;
+//    }
+
     public String getImageUrl(MultipartFile file, final String bucket) throws IOException, ServletException {
         final String fileName = file.getOriginalFilename();
-        if (fileName != null && !fileName.isEmpty() && fileName.contains(".")) {
-            final String extension = fileName.substring(fileName.lastIndexOf('.')+ 1);
-            String[] allowedExt = { "jpg", "jpeg", "png", "gif" };
-            for (String s : allowedExt) {
-                if (extension.equals(s)) {
-                    return this.uploadFile(file, bucket);
-                }
-            }
-            throw new ServletException("file must be an image");
+        if (fileName != null && !fileName.isEmpty()) {
+            return this.uploadFile(file, bucket);
         }
         return null;
     }
 
-
-    public StorageFileDTO getStorageFileDto(MultipartFile file, final String bucket)
-            throws IOException, ServletException {
-        final String fileName = file.getOriginalFilename();
-        // Check file extension
-
-        if (fileName != null && !fileName.isEmpty() && fileName.contains(".")) {
-            final String extension = fileName.substring(fileName.lastIndexOf('.')+ 1);
-            String[] allowedExt = { "jpg", "jpeg", "png", "gif" };
-            for (String s : allowedExt) {
-                if (extension.equals(s)) {
-                    String urlName = this.uploadFile(file, bucket);
-                    return StorageFileDTO.builder().name(urlName).build();
-                }
-            }
-            throw new ServletException("file must be an image");
-        }
-        return null;
+    public StorageFileDTO getStorageFileDto(MultipartFile file, final String bucket) throws IOException, ServletException {
+        String urlName = this.uploadFile(file, bucket);
+        return StorageFileDTO.builder().name(urlName).build();
     }
 
 
