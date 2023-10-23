@@ -15,6 +15,7 @@ services:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: password
   backend:
+    restart: always
     image: uphman/se331-backend:latest
     ports:
       - 8999:8080
