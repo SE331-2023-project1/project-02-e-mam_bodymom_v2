@@ -49,7 +49,6 @@ public class SecurityConfiguration {
                       .requestMatchers(HttpMethod.PUT,"/updatestudents").permitAll()
                       .requestMatchers(HttpMethod.PUT,"/updateteachers").permitAll()
                       .requestMatchers(HttpMethod.POST,"/uploadFile").permitAll()
-                      .requestMatchers(HttpMethod.POST,"/uploadImage").permitAll()
 //                      .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
 //                      .requestMatchers(HttpMethod.POST,"/events").hasRole("ADMIN")
                       .anyRequest().authenticated();
