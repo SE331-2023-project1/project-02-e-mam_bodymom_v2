@@ -90,15 +90,8 @@ public class CloudStorageHelper {
 
     public String getImageUrl(MultipartFile file, final String bucket) throws IOException, ServletException {
         final String fileName = file.getOriginalFilename();
-        if (fileName != null && !fileName.isEmpty() && fileName.contains(".")) {
-            final String extension = fileName.substring(fileName.lastIndexOf('.')+ 1);
-            String[] allowedExt = { "jpg", "jpeg", "png", "gif" };
-            for (String s : allowedExt) {
-                if (extension.equals(s)) {
-                    return this.uploadFile(file, bucket);
-                }
-            }
-            throw new ServletException("file must be an image");
+        if (fileName != null && !fileName.isEmpty()) {
+            return this.uploadFile(file, bucket);
         }
         return null;
     }
