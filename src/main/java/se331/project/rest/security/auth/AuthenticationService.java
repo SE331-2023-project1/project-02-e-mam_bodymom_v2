@@ -47,6 +47,7 @@ public class AuthenticationService {
             .email(request.getEmail())
             .password(passwordEncoder.encode(request.getPassword()))
             .roles(List.of(Role.ROLE_STUDENT))
+            .images(request.getImages())
             .build();
     var savedUser = repository.save(userStudent);
     Student student = new Student();
@@ -71,6 +72,7 @@ public class AuthenticationService {
             .email(request.getEmail())
             .password(passwordEncoder.encode(request.getPassword()))
             .roles(List.of(Role.ROLE_TEACHER))
+            .images(request.getImages())
             .build();
     var savedUser = repository.save(userTeacher);
     Teacher teacher = new Teacher();
