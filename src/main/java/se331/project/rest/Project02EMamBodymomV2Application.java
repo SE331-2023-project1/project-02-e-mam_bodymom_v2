@@ -23,7 +23,7 @@ public class Project02EMamBodymomV2Application {
 						.allowedOrigins("http://18.208.106.67:8001").exposedHeaders("x-total-count")
 						.allowedMethods("GET","POST","PUT","DELETE","HEAD","OPITOINS")
 						.allowCredentials(true)
-						.allowedOrigins("http://34.228.26.1:8001").exposedHeaders("x-total-count")
+						.allowedOrigins("http://44.201.209.16:8001").exposedHeaders("x-total-count")
 						.allowedHeaders("Origin","Authorization","application/json","Content-Type");
 
 			}
