@@ -36,22 +36,27 @@ public class CloudStorageHelper {
     }
     // [END init]
 
+    public String generatePreviewUrl(String bucketName, String fileName) {
+        // Construct the URL for previewing the file
+        return "https://storage.googleapis.com/" + bucketName + "/" + fileName;
+    }
+
     public String uploadFile(MultipartFile filePart, final String bucketName) throws IOException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HHmmssSSS");
         String dtString = sdf.format(new Date());
         final String fileName = dtString + "-" + filePart.getOriginalFilename();
         InputStream is = filePart.getInputStream();
-        ByteArrayOutputStream os = new ByteArrayOutputStream();
-        byte[] readBuf = new byte[4096];
-        while (is.available() > 0) {
-            int bytesRead = is.read(readBuf);
-            os.write(readBuf, 0, bytesRead);
-        }
+
         BlobInfo blobInfo = storage.create(BlobInfo.newBuilder(bucketName, fileName)
                 .setAcl(new ArrayList<>(Arrays.asList(Acl.of(Acl.User.ofAllUsers(), Acl.Role.READER))))
-                .setContentType(filePart.getContentType()).build(), os.toByteArray());
-        return blobInfo.getMediaLink();
+                .setContentType(filePart.getContentType()).build(), is);
+
+        // Now, you can generate the preview URL for the file
+        String previewUrl = generatePreviewUrl(bucketName, fileName);
+
+        return previewUrl;
     }
+
 
 //    public String getImageUrl(MultipartFile file, final String bucket) throws IOException, ServletException {
 //        final String fileName = file.getOriginalFilename();

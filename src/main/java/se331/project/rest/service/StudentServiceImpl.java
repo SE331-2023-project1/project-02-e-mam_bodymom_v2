@@ -59,6 +59,7 @@ public class StudentServiceImpl implements StudentService {
         if (updateStudent != null) {
             updateStudent.getUser().setFirstname(student.getName());
             updateStudent.getUser().setLastname(student.getSurname());
+            updateStudent.getUser().setImages(student.getImages());
 //            updateStudent.getUser().setDepartment(student.getDepartment());
 //            updateStudent.setTeacher(student.getTeacher());
 

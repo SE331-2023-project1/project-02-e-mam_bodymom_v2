@@ -30,7 +30,10 @@ public class BucketController {
 
     @PostMapping("/uploadImage")
     @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<?> uploadFileComponent(@RequestPart(value = "image")MultipartFile file) throws IOException, ServletException {
+    public ResponseEntity<?> uploadFileComponent(@RequestPart(value = "image")MultipartFile file)
+         throws IOException, ServletException {
         return ResponseEntity.ok(this.cloudStorageHelper.getStorageFileDto(file, "imageupload-f10a5.appspot.com"));
     }
+
+
 }
