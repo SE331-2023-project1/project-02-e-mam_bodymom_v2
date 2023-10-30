@@ -61,6 +61,7 @@ public class TeacherServiceImpl implements TeacherService{
 
             updateTeacher.getUser().setFirstname(teacher.getName());
             updateTeacher.getUser().setLastname(teacher.getSurname());
+            updateTeacher.getUser().setImages(teacher.getImages());
 //            updateTeacher.getUser().setDepartment(teacher.getDepartment());
 
             teacherDao.save(updateTeacher);
