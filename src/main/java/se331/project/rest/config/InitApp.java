@@ -190,29 +190,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         student4.setUser(userS4);
         student4.setTeacher(teacher2);
 
-        //Test mapping between user id and teacher id
-//        User userT3 = new User();
-//        userT3.setUsername("OO");
-//        userT3.setPassword(encoder.encode("OO"));
-//        userT3.setFirstname("Tei");
-//        userT3.setLastname("Pattama");
-//        userT3.setRoles(List.of(Role.ROLE_TEACHER));
-//        userT3.setDepartment("Software Engineer");
-//        userRepository.save(userT3);
-//
-//        Teacher teacher3 = new Teacher();
-//        teacher3.setUser(userT3);
-//        teacherRepository.save(teacher3);
-//
-//        teacher3.setUser(userT3);
-//        teacher3.getOwnStudent().add(student1);
-//        teacher3.getOwnStudent().add(student2);
-//        student1.setUser(userS1);
-//        student1.setTeacher(teacher3);
-//        student2.setUser(userS2);
-//        student2.setTeacher(teacher3);
-        //
-
         User admin;
         admin = User.builder()
                 .username("admin")
@@ -238,7 +215,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         announcementRepository.save(announcement);
 
         List<String> files2 = new ArrayList<>();
-        files2.add("https://storage.googleapis.com/download/storage/v1/b/imageupload-f10a5.appspot.com/o/2566-10-23%20040102232-263Final-Formula.pdf?generation=1698008463101860&alt=media");
+        files2.add("https://storage.googleapis.com/imageupload-f10a5.appspot.com/2566-11-01 002337895-Project Description.pdf");
 
         Announcement announcement2;
         announcement2 = Announcement.builder()
@@ -248,52 +225,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build();
         announcementRepository.save(announcement2);
 
-//        User userOP = new User();
-//        userOP.setUsername("oo");
-//        userOP.setPassword(encoder.encode("oo"));
-//        userOP.setFirstname("PP");
-//        userOP.setLastname("PP");
-//        userOP.setRoles(List.of(Role.ROLE_STUDENT));
-//        userOP.setDepartment("PP");
-//        userRepository.save(userOP);
-//
-//        Student studentOP = new Student();
-//        studentOP.setUser(userOP);
-//        studentRepository.save(studentOP);
-//        teacher1.getOwnStudent().add(studentOP);
-//        studentOP.setTeacher(teacher1);
 
     }
-//    User user1, user2, user3;
-//    private void addUser() {
-//        PasswordEncoder encoder = new BCryptPasswordEncoder();
-//        user1 = User.builder()
-//                .username("admin")
-//                .password(encoder.encode("admin"))
-//                .firstname("admin")
-//                .lastname("admin")
-//                .email("admin@admin.com")
-//                .roles(List.of(Role.ROLE_ADMIN))
-//                .build();
-//        user2 = User.builder()
-//                .username("teacher")
-//                .password(encoder.encode("teacher"))
-//                .firstname("teacher")
-//                .lastname("teacher")
-//                .email("enabled@user.com")
-//                .roles(List.of(Role.ROLE_TEACHER))
-//                .build();
-//        user3 = User.builder()
-//                .username("student")
-//                .password(encoder.encode("student"))
-//                .firstname("student")
-//                .lastname("student")
-//                .email("disableUser@user.com")
-//                .roles(List.of(Role.ROLE_STUDENT))
-//                .build();
-//
-//        userRepository.save(user1);
-//        userRepository.save(user2);
-//        userRepository.save(user3);
-//    }
 }
