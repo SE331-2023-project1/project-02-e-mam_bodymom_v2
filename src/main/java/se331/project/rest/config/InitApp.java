@@ -31,54 +31,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     @Override
     @Transactional
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
-//        Teacher t1, t2, t3;
-//        t1 = teacherRepository.save(Teacher.builder()
-//                .name("Dto")
-//                .surname("Dto").build());
-//        t2 = teacherRepository.save(Teacher.builder()
-//                .name("Kong")
-//                .surname("Passakorn").build());
-//        t3 = teacherRepository.save(Teacher.builder()
-//                .name("Tei")
-//                .surname("Pathathai").build());
-//
-//        Student tempStudent;
-//
-//        tempStudent = studentRepository.save(Student.builder()
-//                .name("Thiwakon")
-//                .surname("Sakunchao").build());
-//        tempStudent.setTeacher(t1);
-//        t1.getOwnStudent().add(tempStudent);
-//
-//        tempStudent = studentRepository.save(Student.builder()
-//                .name("Sorawee")
-//                .surname("Sakunchao").build());
-//        tempStudent.setTeacher(t1);
-//        t1.getOwnStudent().add(tempStudent);
-//
-//        tempStudent = studentRepository.save(Student.builder()
-//                .name("Pattanachai")
-//                .surname("Sakunchao").build());
-//        tempStudent.setTeacher(t2);
-//        t2.getOwnStudent().add(tempStudent);
-//
-//        tempStudent = studentRepository.save(Student.builder()
-//                .name("Taninwat")
-//                .surname("Sakunchao").build());
-//        tempStudent.setTeacher(t2);
-//        t2.getOwnStudent().add(tempStudent);
-//
-//        tempStudent = studentRepository.save(Student.builder()
-//                .name("Danaikrit")
-//                .surname("Sakunchao").build());
-//        tempStudent.setTeacher(t3);
-//        t3.getOwnStudent().add(tempStudent);
-
-//        addUser();
-//        t1.setUser(user2);
-//        user2.setTeacher(t1);
-//        tempStudent.setUser(user3);
-//        user3.setStudent(tempStudent);
 
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         User userT1 = new User();
@@ -177,18 +129,34 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         teacher1.setUser(userT1);
         teacher1.getOwnStudent().add(student1);
         teacher1.getOwnStudent().add(student2);
+        teacher1.getOwnStudent().get(0).setName("Thiwakon");
+        teacher1.getOwnStudent().get(0).setSurname("Sakunchao");
+        teacher1.getOwnStudent().get(1).setName("Thanakorn");
+        teacher1.getOwnStudent().get(1).setSurname("Waleejaroenpong");
         student1.setUser(userS1);
         student1.setTeacher(teacher1);
+        student1.getTeacher().setName("Kong");
+        student1.getTeacher().setSurname("Passakorn");
         student2.setUser(userS2);
         student2.setTeacher(teacher1);
+        student2.getTeacher().setName("Kong");
+        student2.getTeacher().setSurname("Passakorn");
 
         teacher2.setUser(userT2);
         teacher2.getOwnStudent().add(student3);
         teacher2.getOwnStudent().add(student4);
+        teacher2.getOwnStudent().get(0).setName("Phacharanan");
+        teacher2.getOwnStudent().get(0).setSurname("Thumjaikul");
+        teacher2.getOwnStudent().get(1).setName("Taninwat");
+        teacher2.getOwnStudent().get(1).setSurname("Sakunchao");
         student3.setUser(userS3);
         student3.setTeacher(teacher2);
+        student3.getTeacher().setName("Tei");
+        student3.getTeacher().setSurname("Pathathai");
         student4.setUser(userS4);
         student4.setTeacher(teacher2);
+        student4.getTeacher().setName("Tei");
+        student4.getTeacher().setSurname("Pathathai");
 
         User admin;
         admin = User.builder()

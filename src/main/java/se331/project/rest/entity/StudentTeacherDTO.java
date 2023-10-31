@@ -13,5 +13,6 @@ public class StudentTeacherDTO {
 
     Long id;
     String name;
+    String surname;
 
 }
