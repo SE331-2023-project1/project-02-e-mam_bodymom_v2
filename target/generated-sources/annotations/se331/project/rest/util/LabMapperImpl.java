@@ -16,7 +16,7 @@ import se331.project.rest.security.user.User;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2566-10-23T08:50:14+0700",
+    date = "2566-11-01T02:23:37+0700",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.8 (Oracle Corporation)"
 )
 public class LabMapperImpl implements LabMapper {
@@ -281,6 +281,7 @@ public class LabMapperImpl implements LabMapper {
 
         studentTeacherDTO.id( teacher.getId() );
         studentTeacherDTO.name( teacher.getName() );
+        studentTeacherDTO.surname( teacher.getSurname() );
 
         return studentTeacherDTO.build();
     }
