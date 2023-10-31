@@ -116,15 +116,12 @@ public class AuthenticationService {
       id = Math.toIntExact(studentId);
     }
 
-//    revokeAllUserTokens(user);
     saveUserToken(user, jwtToken);
-//    System.out.println(user);
     return AuthenticationResponse.builder()
             .accessToken(jwtToken)
             .refreshToken(refreshToken)
             .userRole(userRoles)
             .id(id)
-//            .user(LabMapper.INSTANCE.getOrganizerAuthDTO(user.getOrganizer()))
             .build();
   }
 

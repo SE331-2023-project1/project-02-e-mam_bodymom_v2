@@ -60,15 +60,7 @@ public class StudentServiceImpl implements StudentService {
             updateStudent.getUser().setFirstname(student.getName());
             updateStudent.getUser().setLastname(student.getSurname());
             updateStudent.getUser().setImages(student.getImages());
-//            updateStudent.getUser().setDepartment(student.getDepartment());
-//            updateStudent.setTeacher(student.getTeacher());
-
-//            updateStudent.setName(student.getName());
-//            updateStudent.getUser().setTeacher(student.getTeacher());
-
             studentDao.save(updateStudent);
-//            teacherDao.save(updateStudent.getTeacher());
-
             userDao.save(updateStudent.getUser());
             return updateStudent;
         }
