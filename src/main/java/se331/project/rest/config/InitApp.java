@@ -186,9 +186,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         teacher1.getOwnStudent().get(1).setName("Thanakorn");
         teacher1.getOwnStudent().get(1).setSurname("Waleejaroenpong");
         student1.setUser(userS1);
-        student1.setTeacher(teacher1);
-        student1.getTeacher().setName("Kong");
-        student1.getTeacher().setSurname("Passakorn");
+        student1.setTeacher(teacher2);
+//        student1.getTeacher().setName("Kong");
+//        student1.getTeacher().setSurname("Passakorn");
 
         student2.setTeacher(teacher1);
         student2.getTeacher().setName("Kong");
