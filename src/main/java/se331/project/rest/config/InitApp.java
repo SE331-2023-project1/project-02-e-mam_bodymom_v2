@@ -121,6 +121,58 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         userS4.setImages(Collections.singletonList("https://rebrand.ly/35uqc75"));
         userRepository.save(userS4);
 
+        User userS5 = new User();
+        userS5.setUsername("64211501");
+        userS5.setPassword(encoder.encode("64211501"));
+        userS5.setFirstname("Taninwa");
+        userS5.setLastname("Sakuncho");
+        userS5.setRoles(List.of(Role.ROLE_STUDENT));
+        userS5.setDepartment("Economic");
+        userS5.setImages(Collections.singletonList("https://rebrand.ly/35uqc75"));
+        userRepository.save(userS5);
+
+        Student student5 = new Student();
+        student5.setUser(userS5);
+        studentRepository.save(student5);
+
+        User userS6 = new User();
+        userS6.setUsername("6421119");
+        userS6.setPassword(encoder.encode("6421119"));
+        userS6.setFirstname("Taninwt");
+        userS6.setLastname("Sakuncao");
+        userS6.setRoles(List.of(Role.ROLE_STUDENT));
+        userS6.setDepartment("Ecoomics");
+        userS6.setImages(Collections.singletonList("https://rebrand.ly/35uqc75"));
+        userRepository.save(userS6);
+        Student student6 = new Student();
+        student6.setUser(userS6);
+        studentRepository.save(student6);
+        User userS7 = new User();
+        userS7.setUsername("64115019");
+        userS7.setPassword(encoder.encode("64115019"));
+        userS7.setFirstname("Tawat");
+        userS7.setLastname("unchao");
+        userS7.setRoles(List.of(Role.ROLE_STUDENT));
+        userS7.setDepartment("Econcs");
+        userS7.setImages(Collections.singletonList("https://rebrand.ly/35uqc75"));
+        userRepository.save(userS7);
+        Student student7 = new Student();
+        student7.setUser(userS7);
+        studentRepository.save(student7);
+
+        User userS8 = new User();
+        userS8.setUsername("615019");
+        userS8.setPassword(encoder.encode("5019"));
+        userS8.setFirstname("Tawat");
+        userS8.setLastname("Sakao");
+        userS8.setRoles(List.of(Role.ROLE_STUDENT));
+        userS8.setDepartment("Eccs");
+        userS8.setImages(Collections.singletonList("https://rebrand.ly/35uqc75"));
+        userRepository.save(userS8);
+        Student student8 = new Student();
+        student8.setUser(userS8);
+        studentRepository.save(student8);
+
         Student student4 = new Student();
         student4.setUser(userS4);
         studentRepository.save(student4);
@@ -137,7 +189,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         student1.setTeacher(teacher1);
         student1.getTeacher().setName("Kong");
         student1.getTeacher().setSurname("Passakorn");
-        student2.setUser(userS2);
+
         student2.setTeacher(teacher1);
         student2.getTeacher().setName("Kong");
         student2.getTeacher().setSurname("Passakorn");
@@ -157,6 +209,22 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         student4.setTeacher(teacher2);
         student4.getTeacher().setName("Tei");
         student4.getTeacher().setSurname("Pathathai");
+        student5.setUser(userS5);
+        student5.setTeacher(teacher2);
+        student5.getTeacher().setName("Tei");
+        student5.getTeacher().setSurname("Pathathai");
+        student6.setUser(userS6);
+        student6.setTeacher(teacher2);
+        student6.getTeacher().setName("Tei");
+        student6.getTeacher().setSurname("Pathathai");
+        student7.setUser(userS7);
+        student7.setTeacher(teacher2);
+        student7.getTeacher().setName("Tei");
+        student7.getTeacher().setSurname("Pathathai");
+        student8.setUser(userS8);
+        student8.setTeacher(teacher2);
+        student8.getTeacher().setName("Tei");
+        student8.getTeacher().setSurname("Pathathai");
 
         User admin;
         admin = User.builder()
